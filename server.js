@@ -7,6 +7,9 @@ app.use(bodyparser.urlencoded({ extended : true }));
 var path = require('path');
 var server = require('http').createServer(app);
 var io = require('socket.io')(server);
+app.listen(process.env.PORT || 4000, function(){
+    console.log('Your node js server is running');
+});
 app.get('/index.htm', function (req, res) {
    res.sendFile( __dirname + "/" + "index.html" );
 })
