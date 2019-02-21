@@ -1,14 +1,11 @@
 {
-  "name": "weatherapp",
-  "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
   "scripts": {
     "start": "node server.js"
   },
-  "author": "",
-  "license": "ISC",
   "dependencies": {
-    "socket.io": "^2.2.0"
+    "express": "^4.16.3"
+  },
+  "engines": {
+    "node": "9.8.0"
   }
 }
