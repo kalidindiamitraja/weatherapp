@@ -1,26 +1,29 @@
-var request = require('request');
-var express = require('express');
-var bodyparser = require('body-parser');
+const request = require('request');
+const express = require('express');
+const bodyparser = require('body-parser');
 var app = express();
 app.use(bodyparser.json());
 app.use(bodyparser.urlencoded({ extended : true }));
 var path = require('path');
 var server = require('http').createServer(app);
 var io = require('socket.io')(server);
-app.post{'/webhook',function(req,res) {
+app.listen((process.env.PORT || 8000),function(){
+	console.log("server is running");
+})
+app.post('/webhook',function(req,res) {
 	if(!req.body) return res.sendStatus(400);
 	res.setHeader('Content-Type','application/json');
-    	var city = req.body.queryResult.parameters['geo-city'];
-    	var w = getWeather(city);
-    	let response = "";
-    	let responseObj = {
-    							"fulfillmentText" :response,
-    							"fulfillmentMessages" : [{"text" : {"text" :[w]}}],
-    							"source":""
-    					  }
+    var city = req.body.queryResult.parameters['geo-city'];
+    var w = getWeather(city);
+    let response = "";
+    let responseObj = {
+    						"fulfillmentText" :response,
+    						"fulfillmentMessages" : [{"text" : {"text" :[w]}}],
+    						"source":""
+    				  }
     	return res.json(responseObj);
-    	}
-}
+    }
+)
 var result;
 function cb (err,response,body){
 	if(err){
@@ -37,7 +40,7 @@ function cb (err,response,body){
 }
 function getWeather(city){
 	result = undefined;
-	var url = "api.openweathermap.org/data/2.5/weather?q="+${city}+"&units=imperial&APPID=93aa738c3def4a59188a10de47cf0329";
+	var url = `api.openweathermap.org/data/2.5/weather?q${city}&units=imperial&APPID=93aa738c3def4a59188a10de47cf0329`;
 	var result = request(url,cb);
 	return result;
 }
