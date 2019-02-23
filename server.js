@@ -4,14 +4,16 @@ const bodyparser = require('body-parser');
 var app = express();
 app.use(bodyparser.json());
 app.use(bodyparser.urlencoded({ extended : true }));
+app = app.use(express.static(__dirname + '/'));
 var path = require('path');
 var server = require('http').createServer(app);
 var io = require('socket.io')(server);
 app.listen(process.env.PORT || 4000, function(){
     console.log('Your node js server is running');
 });
-app.get('/index.htm', function (req, res) {
+app.post('/index.html', function (req, res) {
    res.sendFile( __dirname + "/" + "index.html" );
+   console.log("posted")
 })
 app.post('/webhook',function(req,res) {
 	if(!req.body) return res.sendStatus(400);
