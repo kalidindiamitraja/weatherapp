@@ -35,6 +35,8 @@ var k = request(url , weather);
 }
 return w;
 }
-server.listen(process.env.PORT || 3000);
+app.listen(process.env.PORT || 3000 , function(){
+	console.log("port 3000");
+});
 
 
