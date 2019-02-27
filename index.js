@@ -35,8 +35,8 @@ var k = request(url , weather);
 }
 return w;
 }
-app.listen(process.env.PORT || 4000, function(){
-	console.log('Your node js server is running');
+server.listen(process.env.PORT || 8000, () => {
+	console.log(Server running at port 8000);
 });
 
 
