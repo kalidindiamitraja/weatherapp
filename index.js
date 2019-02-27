@@ -35,7 +35,7 @@ var k = request(url , weather);
 }
 return w;
 }
-server.listen(process.env.PORT || 8000, () => {
+io.listen(process.env.PORT || 8000, () => {
 	console.log(Server running at port 8000);
 });
 
