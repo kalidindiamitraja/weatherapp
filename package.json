@@ -4,13 +4,14 @@
   "description": "A simple weather app",
   "main": "index.js",
   "dependencies": {
+    "body-parser": "^1.18.3",
     "deasync": "^0.1.14",
     "ejs": "^2.6.1",
     "socket.io": "^2.2.0"
   },
   "devDependencies": {},
   "scripts": {
-    "start" : "node index.js"
+    "start": "node index.js"
   },
   "repository": {
     "type": "git",
