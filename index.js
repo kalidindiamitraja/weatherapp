@@ -45,7 +45,7 @@ var k = request(url , weather);
 return w;
 }
 app.listen(process.env.PORT || 3000 , function(){
-	console.log("port 3000");
+	console.log("port 3000 running");
 });
 
 
