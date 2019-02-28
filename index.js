@@ -3,10 +3,9 @@ var bodyparser = require('body-parser');
 var express = require('express');
 var request = require('request');
 var app = express();
-var server = require('http').createServer(app);
-var io = require('socket.io')(server);
 var w;
 app.post('/webhook',function(req,res) {
+	res.write("helloworld");
 	if(!req.body) return res.sendStatus(400);
 	res.setHeader('Content-Type','application/json');
     	var city = req.body.queryResult.parameters['geo-city'];
