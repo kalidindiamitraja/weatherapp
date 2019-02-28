@@ -9,7 +9,7 @@ app.use(express.static('public'));
 app.get('/', function (req, res) {
    res.sendFile( __dirname + "/" + "index.html" );
 })
-app.post('/process_post', urlencodedParser, function (req, res) {
+app.post('/weather', urlencodedParser, function (req, res) {
 	city = req.body.geocity;
 	var w = myfunc();
   res.end(w);
