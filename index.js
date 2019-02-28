@@ -2,14 +2,15 @@ var http = require('http');
 var bodyParser = require('body-parser');
 var express = require('express');
 var request = require('request');
+var path = require('path');
 var app = express();
 var w,city;
 var urlencodedParser = bodyParser.urlencoded({ extended: false });
 app.use(express.static('public'));
 app.get('/', function (req, res) {
-   res.sendFile( __dirname + "/" + "index.html" );
+   res.sendFile(path.join( __dirname + "/" + "index.html" ));
 })
-app.post('/weather', urlencodedParser, function (req, res) {
+app.post('/process_post', urlencodedParser, function (req, res) {
 	city = req.body.geocity;
 	var w = myfunc();
   res.end(w);
