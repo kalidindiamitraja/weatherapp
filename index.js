@@ -6,15 +6,7 @@ var path = require('path');
 var app = express();
 var w,city;
 var urlencodedParser = bodyParser.urlencoded({ extended: false });
-app.get('/', function (req, res) {
-   res.sendFile(path.join( __dirname + "/" + "public/index.html" ));
-})
-app.post('/', urlencodedParser, function (req, res) {
-	city = req.body.geocity;
-	var w = myfunc();
-  res.end(w);
-})
-app.post('/',urlencodedParser,function(req,res) {
+app.post('/webhook',function(req,res) {
 	res.setHeader('Content-Type','application/json');
     	city = req.body.queryResult.parameters['geo-city'];
 			var w = myfunc();
@@ -42,6 +34,14 @@ var k = request(url , weather);
 }
 return w;
 }
+app.get('/', function (req, res) {
+	res.sendFile(path.join( __dirname + "/" + "public/index.html" ));
+})
+app.post('/', urlencodedParser, function (req, res) {
+ city = req.body.geocity;
+ var w = myfunc();
+ res.end(w);
+})
 app.listen(process.env.PORT || 3000 , function(){
 	console.log("port 3000 running");
 });
