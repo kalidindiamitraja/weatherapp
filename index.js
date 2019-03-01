@@ -17,7 +17,7 @@ app.post('/', urlencodedParser, function (req, res) {
 app.post('/webhook',urlencodedParser,function(req,res) {
 	res.setHeader('Content-Type','application/json');
     	city = req.body.queryResult.parameters['geo-city'];
-			var w = "hello";
+			var w = myfunc();
 			console.log(w);
     	var responseObj = {
     				"fulfillmentText" :" ",
