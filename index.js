@@ -6,7 +6,7 @@ var path = require('path');
 var app = express();
 var w,city;
 var urlencodedParser = bodyParser.urlencoded({ extended: false });
-app.get('/webhook',function(err,req,res){
+app.get('/webhook',function(req,res){
   city = req.body.queryResult.parameters['geo-city'];
 	var w = myfunc();
 	console.log(w);
