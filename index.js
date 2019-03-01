@@ -15,8 +15,8 @@ app.post('/', urlencodedParser, function (req, res) {
 	var w = myfunc();
   res.end(w);
 })
-app.post('/',function(req,res) {
-	if(!req.body) return res.sendStatus(400);
+app.post('/webhook',function(req,res) {
+	if(!req.body) return res.sendStatus(404);
 	res.setHeader('Content-Type','application/json');
     	city = req.body.queryResult.parameters['geo-city'];
     	var w = myfunc();
