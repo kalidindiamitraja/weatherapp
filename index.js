@@ -1,9 +1,10 @@
-var http = require('http');
 var bodyParser = require('body-parser');
 var express = require('express');
 var request = require('request');
 var path = require('path');
 var app = express();
+var server = require('http').createServer(app);
+var io =require('socket.io')(server);
 var w,city;
 var urlencodedParser = bodyParser.urlencoded({ extended: false });
 app.get('/webhook',function(req,res){
@@ -41,7 +42,7 @@ app.post('/', urlencodedParser, function (req, res) {
  var w = myfunc();
  res.end(w);
 })
-app.listen(process.env.PORT || 3000 , function(){
+io.listen(process.env.PORT || 3000 , function(){
 	console.log("port 3000 running");
 });
 
