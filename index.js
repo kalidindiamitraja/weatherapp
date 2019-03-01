@@ -6,19 +6,17 @@ var path = require('path');
 var app = express();
 var w,city;
 var urlencodedParser = bodyParser.urlencoded({ extended: false });
-app.post('/webhook',function(req,res) {
-	res.setHeader('Content-Type','application/json');
-    	city = req.body.queryResult.parameters['geo-city'];
-			var w = myfunc();
-			console.log(w);
-    	var responseObj = {
-    				"fulfillmentText" :" ",
-    				"fulfillmentMessages" : [{"text" : {"text" :[w]}}],
-    				"source":""
-    			  }
-    	return res.json(responseObj);
-    }
-)
+app.post('/webhook',function(err,req,res){
+  city = req.body.queryResult.parameters['geo-city'];
+	var w = myfunc();
+	console.log(w);
+  var responseObj = {
+    		"fulfillmentText" :" ",
+    	  "fulfillmentMessages" : [{"text" : {"text" :[w]}}],
+    		"source":""
+    		}
+  return res.json(responseObj);
+  })
 function weather (err , response , body )
 {
 var bod = JSON.parse(body);
