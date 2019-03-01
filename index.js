@@ -6,6 +6,14 @@ var path = require('path');
 var app = express();
 var w,city;
 var urlencodedParser = bodyParser.urlencoded({ extended: false });
+app.get('/', function (req, res) {
+   res.sendFile(path.join( __dirname + "/" + "public/index.html" ));
+})
+app.post('/', urlencodedParser, function (req, res) {
+	city = req.body.geocity;
+	var w = myfunc();
+  res.end(w);
+})
 app.post('/webhook',function(req,res) {
 	res.setHeader('Content-Type','application/json');
     	city = req.body.queryResult.parameters['geo-city'];
@@ -19,15 +27,6 @@ app.post('/webhook',function(req,res) {
     	return res.json(responseObj);
     }
 )
-app.use(express.static('public'));
-app.get('/', function (req, res) {
-   res.sendFile(path.join( __dirname + "/" + "index.html" ));
-})
-app.post('/', urlencodedParser, function (req, res) {
-	city = req.body.geocity;
-	var w = myfunc();
-  res.end(w);
-})
 function weather (err , response , body )
 {
 var bod = JSON.parse(body);
