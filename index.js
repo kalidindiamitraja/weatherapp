@@ -42,7 +42,7 @@ app.post('/', urlencodedParser, function (req, res) {
  var w = myfunc();
  res.end(w);
 })
-io.listen(process.env.PORT || 3000 , function(){
+app.listen(process.env.PORT || 3000 , function(){
 	console.log("port 3000 running");
 });
 
