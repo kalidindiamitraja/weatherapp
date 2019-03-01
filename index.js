@@ -15,14 +15,13 @@ app.post('/', urlencodedParser, function (req, res) {
 	var w = myfunc();
   res.end(w);
 })
-app.post('/webhook',function(err , response , body) {
+app.post('/webhook',function(req,res) {
 	res.setHeader('Content-Type','application/json');
-	    var bod = JSON.parse(body);
-    	city = bod.queryResult.parameters['geo-city'];
-    	var w = myfunc();
-    	let response = "";
-    	let responseObj = {
-    				"fulfillmentText" :response,
+    	city = req.body.queryResult.parameters['geo-city'];
+			var w = myfunc();
+			console.log(w);
+    	var responseObj = {
+    				"fulfillmentText" :" ",
     				"fulfillmentMessages" : [{"text" : {"text" :[w]}}],
     				"source":""
     			  }
