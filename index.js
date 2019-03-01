@@ -19,7 +19,7 @@ app.post('/webhook',function(req,res) {
 	if(!req.body) return res.sendStatus(400);
 	res.setHeader('Content-Type','application/json');
     	var city = req.body.queryResult.parameters['geo-city'];
-    	var w = myfunc(city);
+    	var w = myfunc();
     	let response = "";
     	let responseObj = {
     				"fulfillmentText" :response,
