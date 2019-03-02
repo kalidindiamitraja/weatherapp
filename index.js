@@ -5,20 +5,23 @@ var path = require('path');
 var app = express();
 var server = require('http').createServer(app);
 var io =require('socket.io')(server);
-var w,city;
+var w,city,responseObj;
 var urlencodedParser = bodyParser.urlencoded({ extended: false });
 app.get('/webhook',function(req,res){
 	res.setHeader('Content-Type','application/json');
   city = req.body.queryResult.parameters['geo-city'];
 	var w = myfunc();
 	console.log(w);
-  var responseObj = {
+  responseObj = {
     		"fulfillmentText" :" ",
     	  "fulfillmentMessages" : [{"text" : {"text" :[w]}}],
     		"source":""
     		}
-  return res.json(responseObj);
-  })
+	})
+app.post('/webhook',function(req,res){
+	res.setHeader('Content-Type','application/json');
+  return res.json(responseObj);	
+})
 function weather (err , response , body )
 {
 var bod = JSON.parse(body);
