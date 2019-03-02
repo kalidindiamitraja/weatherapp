@@ -7,21 +7,17 @@ var server = require('http').createServer(app);
 var io =require('socket.io')(server);
 var w,city,responseObj;
 var urlencodedParser = bodyParser.urlencoded({ extended: false });
-app.get('/webhook',function(req,res){
+app.post('/webhook',function(req,res){
 	res.setHeader('Content-Type','application/json');
   city = req.body.queryResult.parameters['geo-city'];
-	var w = "hello";
-	console.log(w);
+	var w = myfunc();
   responseObj = {
     		"fulfillmentText" :" ",
     	  "fulfillmentMessages" : [{"text" : {"text" :[w]}}],
     		"source":""
-    		}
+				}
+	return res.json(responseObj);
 	})
-app.post('/webhook',function(req,res){
-	res.setHeader('Content-Type','application/json');
-  return res.json(responseObj);	
-})
 function weather (err , response , body )
 {
 var bod = JSON.parse(body);
@@ -45,7 +41,7 @@ app.post('/', urlencodedParser, function (req, res) {
  var w = myfunc();
  res.end(w);
 })
-app.listen(process.env.PORT || 3000 , function(){
+server.listen(process.env.PORT || 3000 , function(){
 	console.log("port 3000 running");
 });
 
