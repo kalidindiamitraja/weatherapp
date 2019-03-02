@@ -9,7 +9,7 @@ var w,city,responseObj;
 var urlencodedParser = bodyParser.urlencoded({ extended: false });
 app.get('/webhook',function(req,res){
 	res.setHeader('Content-Type','application/json');
-  city = req.body.queryResult.parameters['geo-city'];
+  city = JSON.parse(req.body).queryResult.parameters['geo-city'];
 	var w = myfunc();
   responseObj = {
     		"fulfillmentText" :" ",
