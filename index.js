@@ -7,7 +7,7 @@ var server = require('http').createServer(app);
 var io =require('socket.io')(server);
 var w,city,responseObj;
 var urlencodedParser = bodyParser.urlencoded({ extended: false });
-app.post('/webhook',function(req,res){
+app.get('/webhook',function(req,res){
 	res.setHeader('Content-Type','application/json');
   city = req.body.queryResult.parameters['geo-city'];
 	var w = myfunc();
