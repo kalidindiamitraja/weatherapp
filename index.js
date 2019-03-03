@@ -4,7 +4,6 @@ var request = require('request');
 var path = require('path');
 var app = express();
 var server = require('http').createServer(app);
-var io =require('socket.io')(server);
 var w,city,responseObj;
 var urlencodedParser = bodyParser.urlencoded({ extended: false });
 app.get('/webhook',function(req,res){
