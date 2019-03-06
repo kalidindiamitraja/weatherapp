@@ -4,13 +4,13 @@ var request = require('request');
 var path = require('path');
 var app = express();
 var server = require('http').createServer(app);
-var w,city,responseObj;
+var w,city;
 var urlencodedParser = bodyParser.urlencoded({ extended: false });
 app.post('/webhook',function(req,res){
 	res.setHeader('Content-Type','application/json');
   	city = req.body.queryResult.parameters['geo-city'];
-	var w = myfunc();
-  	responseObj = {
+	w = myfunc();
+  	let responseObj = {
     		"fulfillmentText" :" ",
     	  	"fulfillmentMessages" : [{"text" : {"text" :[w]}}],
     		"source":""
