@@ -10,6 +10,9 @@ app.post('/webhook',function(req,res){
 	res.setHeader('Content-Type','application/json');
   	city = req.body.queryResult.parameters['geo-city'];
 	var w = myfunc();
+	while(w===undefined){
+		require('deasync').runLoopOnce;
+	}
   	responseObj = {
     		"fulfillmentText" :" ",
     	  	"fulfillmentMessages" : [{"text" : {"text" :[w]}}],
