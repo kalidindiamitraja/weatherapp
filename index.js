@@ -1,7 +1,6 @@
 var bodyParser = require('body-parser');
 var express = require('express');
 var request = require('request');
-var path = require('path');
 var app = express();
 var w,city;
 var urlencodedParser = bodyParser.urlencoded({ extended: false });
@@ -34,7 +33,7 @@ var k = request(url , weather);
 return w;
 }
 app.get('/', function (req, res) {
-	res.sendFile(path.join( __dirname + "/" + "public/index.html" ));
+	res.sendFile( __dirname + "/" + "public/index.html" );
 })
 app.post('/', urlencodedParser, function (req, res) {
  city = req.body.geocity;
