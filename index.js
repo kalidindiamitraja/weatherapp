@@ -5,7 +5,7 @@ var path = require('path');
 var app = express();
 var w,city;
 var urlencodedParser = bodyParser.urlencoded({ extended: false });
-app.post('/',function(req,res){
+app.post('/webhook',function(req,res){
 	console.log("into the post");
 	res.setHeader('Content-Type','application/json');
 	city = req.body.queryResult.parameters['geo-city'];
