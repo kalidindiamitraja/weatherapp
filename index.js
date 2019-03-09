@@ -3,10 +3,9 @@ var express = require('express');
 var request = require('request');
 var path = require('path');
 var app = express();
-var server = require('http').createServer(app);
 var w,city;
 var urlencodedParser = bodyParser.urlencoded({ extended: false });
-app.post('/webhook',function(req,res){
+app.post('/',function(req,res){
 	console.log("into the post");
 	res.setHeader('Content-Type','application/json');
 	city = req.body.queryResult.parameters['geo-city'];
