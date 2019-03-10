@@ -34,10 +34,10 @@ var k = request(url , weather);
 }
 return w;
 }
-server.get('/', function (req, res) {
+app.get('/', function (req, res) {
 	res.sendFile( __dirname + "/" + "public/index.html" );
 })
-server.post('/', urlencodedParser, function (req, res) {
+app.post('/', urlencodedParser, function (req, res) {
  city = req.body.geocity;
  var w = myfunc();
  res.end(w);
