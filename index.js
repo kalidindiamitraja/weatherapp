@@ -15,7 +15,7 @@ app.post('/webhook',function(err,req,res){
     	  	"fulfillmentMessages" : [{"text" : {"text" :[w]}}],
     		"source":""
 	}
-	return res.json(responseObj);
+	res.send(responseObj);
 })
 function weather (err , response , body )
 {
