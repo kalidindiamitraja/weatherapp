@@ -2,13 +2,14 @@ var bodyParser = require('body-parser');
 var express = require('express');
 var request = require('request');
 var app = express();
+var server = require('http').createServer(app);
 var w,city;
 var urlencodedParser = bodyParser.urlencoded({ extended: false });
-app.post('/webhook',function(err,req,res){
+app.post('/webhook',function(request,response){
 	if(err) throw err;
 	console.log("into the post");
-	res.setHeader('Content-Type','application/json');
-	city = req.body.queryResult.parameters['geo-city'];
+	response.setHeader('Content-Type','application/json');
+	city = request.body.queryResult.parameters['geo-city'];
 	console.log("found city");
 	w = myfunc();
   	let responseObj = {
@@ -16,7 +17,7 @@ app.post('/webhook',function(err,req,res){
     	  	"fulfillmentMessages" : [{"text" : {"text" :[w]}}],
     		"source":""
 	}
-	res.send(responseObj);
+	response.send(responseObj);
 })
 function weather (err , response , body )
 {
