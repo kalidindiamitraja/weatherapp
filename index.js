@@ -5,7 +5,7 @@ var app = express();
 var server = require('http').createServer(app);
 var w,city;
 var urlencodedParser = bodyParser.urlencoded({ extended: false });
-app.post('/webhook',function(request,response){
+server.post('/webhook',function(request,response){
 	if(err) throw err;
 	console.log("into the post");
 	response.setHeader('Content-Type','application/json');
@@ -34,10 +34,10 @@ var k = request(url , weather);
 }
 return w;
 }
-app.get('/', function (req, res) {
+server.get('/', function (req, res) {
 	res.sendFile( __dirname + "/" + "public/index.html" );
 })
-app.post('/', urlencodedParser, function (req, res) {
+server.post('/', urlencodedParser, function (req, res) {
  city = req.body.geocity;
  var w = myfunc();
  res.end(w);
