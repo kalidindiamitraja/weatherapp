@@ -5,7 +5,7 @@ var app = express();
 var server = require('http').createServer(app);
 var w,city;
 var urlencodedParser = bodyParser.urlencoded({ extended: false });
-server.post('/webhook',function(request,response){
+app.post('/webhook',function(request,response){
 	if(err) throw err;
 	console.log("into the post");
 	response.setHeader('Content-Type','application/json');
